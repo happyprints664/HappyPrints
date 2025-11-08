@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>H/P Happy Prints — Design, Print, Smile</title>
+  <meta name="description" content="H/P Happy Prints: Custom T-shirts, mugs, bottles, caps, sportswear, photo frames, keychains & corporate gifting. Design, Print, Smile." />
+  <link rel="canonical" href="https://happyprints.example/" />
+  <meta property="og:title" content="H/P Happy Prints — Design, Print, Smile" />
+  <meta property="og:description" content="Creative, premium custom printing for gifts and brands. Order on WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#10b981" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            emerald: {
+              450: '#34d399'
+            },
+            gold: '#f59e0b'
+          },
+          backgroundImage: {
+            'hero-gradient': 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(236,72,153,0.08))',
+            'glass': 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
+            'shine': 'radial-gradient(1200px 400px at 10% -10%, rgba(255,255,255,0.6), transparent 60%), radial-gradient(1200px 400px at 90% -20%, rgba(255,255,255,0.5), transparent 60%)'
+          },
+          boxShadow: {
+            glow: '0 0 0 4px rgba(16,185,129,0.15)',
+            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+            'xl-colored': '0 20px 50px -12px rgba(16, 185, 129, 0.25)'
+          },
+          backdropBlur: {
+            xs: '2px'
+          },
+          keyframes: {
+            float: { 
+              '0%, 100%': { transform: 'translateY(0) rotate(0deg)' }, 
+              '50%': { transform: 'translateY(-12px) rotate(2deg)' } 
+            },
+            fadeUp: {
+              '0%': { opacity: 0, transform: 'translateY(24px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            },
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            },
+            slideDown: {
+              '0%': { transform: 'translateY(-100%)', opacity: 0 },
+              '100%': { transform: 'translateY(0)', opacity: 1 }
+            },
+            pulse: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0.8 }
+            },
+            bounce: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            fadeUp: 'fadeUp .8s ease both',
+            fadeIn: 'fadeIn .6s ease both',
+            shimmer: 'shimmer 2.5s linear infinite',
+            slideDown: 'slideDown .3s ease both',
+            pulse: 'pulse 2s ease-in-out infinite',
+            bounce: 'bounce 1s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- SwiperJS for Testimonials -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+  <script defer src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .gold-text { 
+      background: linear-gradient(135deg,#fbbf24,#f59e0b,#fbbf24); 
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      color: transparent;
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .glass-dark {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .btn-shine { 
+      background-image: linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,0),rgba(255,255,255,.3)); 
+      background-size: 200% 100%; 
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-shine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn-shine:hover::before {
+      left: 100%;
+    }
+    
+    .i18n-hidden { display: none !important; }
+    
+    /* Modern confetti pattern */
+    .confetti-bg {
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(16,185,129,.06) 0 8px, transparent 9px),
+        radial-gradient(circle at 85% 25%, rgba(245,158,11,.06) 0 6px, transparent 7px),
+        radial-gradient(circle at 45% 85%, rgba(236,72,153,.06) 0 10px, transparent 11px),
+        radial-gradient(circle at 70% 70%, rgba(59,130,246,.06) 0 7px, transparent 8px);
+      background-size: 150px 150px, 180px 180px, 200px 200px, 160px 160px;
+      background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    }
+    
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: #059669; }
+    
+    /* Image hover effect */
+    .img-hover-zoom {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .img-hover-zoom img {
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .img-hover-zoom:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Mobile menu animation */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    /* Loading spinner */
+    .spinner {
+      border: 3px solid rgba(16, 185, 129, 0.1);
+      border-top-color: #10b981;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Gradient text animation */
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+    
+    /* Card hover effect */
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px -12px rgba(16, 185, 129, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-50 glass-effect shadow-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl-colored transition-all duration-300 group-hover:scale-105">
+            <img src="assets/logo.jpg" alt="Happy Prints Logo" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <p class="font-extrabold tracking-tight text-xl">Happy Prints</p>
+            <p class="text-xs text-slate-500 font-medium" data-i18n="tagline">Design, Print, Smile</p>
+          </div>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+          <a href="#home" class="hover:text-emerald-600 transition-colors relative group">
+            Home
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#gallery" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_gallery">
+            Gallery
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#products" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_products">
+            Products
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#pricing" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_pricing">
+            Pricing
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#reviews" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_reviews">
+            Reviews
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#order" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_order">
+            Order
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#contact" class="hover:text-emerald-600 transition-colors relative group" data-i18n="nav_contact">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></span>
+          </a>
+        </nav>
+        
+        <!-- CTA Buttons -->
+        <div class="hidden md:flex items-center gap-3">
+          <button id="langToggle" class="px-4 py-2 rounded-xl text-sm font-semibold border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 transition-all duration-300 hover:scale-105">
+            🇮🇳 MR/EN
+          </button>
+          <a target="_blank" rel="noopener" href="https://wa.me/919763518364?text=Hi%20Happy%20Prints!%20I%20want%20to%20print%20a%20custom%20design." class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-600 shadow-lg hover:shadow-xl-colored transition-all duration-300 hover:scale-105 font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl hover:bg-emerald-50 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-80 max-w-full glass-dark z-50 shadow-2xl">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between p-6 border-b border-white/10">
+        <p class="text-white font-bold text-lg">Menu</p>
+        <button id="closeMobileMenu" class="p-2 rounded-xl hover:bg-white/10 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex-1 p-6 space-y-2 overflow-y-auto">
+        <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium">Home</a>
+        <a href="#gallery" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_gallery">Gallery</a>
+        <a href="#products" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_products">Products</a>
+        <a href="#pricing" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_pricing">Pricing</a>
+        <a href="#reviews" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_reviews">Reviews</a>
+        <a href="#order" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_order">Order</a>
+        <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-white hover:bg-white/10 transition-colors font-medium" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="p-6 border-t border-white/10 space-y-3">
+        <button id="langToggleMobile" class="w-full px-4 py-3 rounded-xl text-sm font-semibold border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+          🇮🇳 Switch Language
+        </button>
+        <a target="_blank" rel="noopener" href="https://wa.me/919763518364" class="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg font-semibold transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a target="_blank" rel="noopener" href="https://instagram.com/" class="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:bg-white/10 font-semibold transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden"></div>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden confetti-bg min-h-[90vh] flex items-center">
+    <div class="absolute inset-0 bg-hero-gradient"></div>
+    <div id="parallaxLayer" class="absolute inset-x-0 -top-24 h-96 bg-shine opacity-40 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 animate-fadeUp">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect text-sm font-semibold text-emerald-700">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span data-i18n="hero_badge">Premium Custom Printing Services</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+            <span class="gold-text block">Happy Prints</span>
+            <span class="block mt-3 gradient-text" data-i18n="hero_h1">Your Custom Printing Partner</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed font-medium" data-i18n="hero_sub">
+            Premium custom T‑shirts, mugs, bottles, caps, mousepads, ladies' wear, sportswear, frames, keychains and corporate gifting — designed for celebrations and brands.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://wa.me/919763518364?text=Hi%20Happy%20Prints!%20I%20want%20to%20place%20an%20order." target="_blank" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-600 shadow-xl shadow-emerald-600/30 hover:shadow-2xl hover:shadow-emerald-600/40 transition-all duration-300 hover:scale-105 font-bold text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              <span data-i18n="cta_order">Order on WhatsApp</span>
+            </a>
+            <a href="#gallery" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl glass-effect border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold text-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span data-i18n="cta_view">See Gallery</span>
+            </a>
+          </div>
+          <div class="flex flex-wrap items-center gap-6 pt-4">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl text-amber-400">★★★★★</span>
+              <span class="text-sm font-semibold text-slate-700" data-i18n="rating">5-star rated</span>
+            </div>
+            <div class="w-px h-6 bg-slate-300 hidden sm:block"></div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span data-i18n="fast_quote">Fast quotes on WhatsApp</span>
+            </div>
+            <div class="w-px h-6 bg-slate-300 hidden sm:block"></div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Premium Quality</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mockups Grid -->
+        <div class="relative animate-fadeUp" style="animation-delay: 0.2s">
+          <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-gradient-to-br from-emerald-400/30 to-emerald-600/30 blur-3xl animate-float"></div>
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-gradient-to-br from-pink-400/30 to-purple-600/30 blur-3xl animate-float" style="animation-delay: -3s"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gradient-to-br from-blue-400/20 to-cyan-600/20 blur-3xl animate-pulse"></div>
+          
+          <div class="grid grid-cols-2 gap-4 md:gap-6 relative">
+            <div class="img-hover-zoom rounded-3xl overflow-hidden shadow-2xl card-hover">
+              <img alt="Custom T-shirt printing" class="w-full h-56 md:h-64 object-cover" src="assets/tshirt.webp" loading="lazy" />
+            </div>
+            <div class="img-hover-zoom rounded-3xl overflow-hidden shadow-2xl card-hover mt-8">
+              <img alt="Custom mug printing" class="w-full h-56 md:h-64 object-cover" src="assets/mug.webp" loading="lazy" />
+            </div>
+            <div class="img-hover-zoom rounded-3xl overflow-hidden shadow-2xl card-hover -mt-8">
+              <img alt="Photo frame printing" class="w-full h-56 md:h-64 object-cover" src="assets/photoframe.webp" loading="lazy" />
+            </div>
+            <div class="img-hover-zoom rounded-3xl overflow-hidden shadow-2xl card-hover">
+              <img alt="Custom cap printing" class="w-full h-56 md:h-64 object-cover" src="assets/cap.webp" loading="lazy" />
+            </div>
+          </div>
+          
+          <!-- Floating badge -->
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-effect px-6 py-3 rounded-2xl shadow-xl border-2 border-white/50 animate-bounce">
+            <p class="text-sm font-bold text-emerald-700">✨ <span data-i18n="hero_floating">1000+ Happy Customers</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section id="products" class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-16 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect text-sm font-semibold text-emerald-700 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          <span>Our Services</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4" data-i18n="what_title">What We Do</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto" data-i18n="what_sub">Creative printing solutions for personal, sports and corporate needs.</p>
+      </header>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7 16 3H8L4 7l4 2v10h8V9z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_tshirt">Custom T-shirts</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_tshirt_sub">DTF, screen & vinyl prints in vibrant colors.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.1s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h8v10a4 4 0 0 1-4 4H6z"/><path d="M14 8h3a3 3 0 1 1 0 6h-3"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_mugs">Mugs & Bottles</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_mugs_sub">Sublimation prints that last wash after wash.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.2s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10s3-4 9-4 9 4 9 4v2H3z"/><path d="M3 12v2a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6v-2"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_caps">Personalized Caps</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_caps_sub">Trendy caps with your logo or name.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.3s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h10"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3">Mousepads</h3>
+          <p class="text-slate-600 leading-relaxed">Custom printed mousepads for gaming and office.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.4s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-rose-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5v3H5v11h14V10h-2V7a5 5 0 0 0-5-5z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3">Ladies' Wear</h3>
+          <p class="text-slate-600 leading-relaxed">Custom printed ladies' tops, kurtis and more.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.5s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 5 3-3 4-2-1v12H8V9L6 10 3 6l5-3"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_sports">Sportswear printing</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_sports_sub">Team jerseys, names and numbers.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.6s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_frames">Photo frames & Keychains</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_frames_sub">Gift-ready frames and accessories.</p>
+        </div>
+        <div class="group p-8 rounded-3xl glass-effect border-2 border-white/50 hover:border-emerald-200 card-hover animate-fadeUp" style="animation-delay:.7s">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <h3 class="font-bold text-xl mb-3" data-i18n="svc_corp">Corporate gifting printing</h3>
+          <p class="text-slate-600 leading-relaxed" data-i18n="svc_corp_sub">Bulk orders with brand quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-20 md:py-28 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-16 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect text-sm font-semibold text-emerald-700 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Portfolio</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4" data-i18n="gallery_title">Products Gallery</h2>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto" data-i18n="gallery_sub">High‑quality mockups and real product vibes.</p>
+      </header>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <figure class="group img-hover-zoom rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 animate-fadeUp relative">
+          <img class="w-full h-56 md:h-64 object-cover" src="assets/tshirt.webp" alt="Custom T-shirt printing" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <p class="text-white font-bold text-lg">Custom T-shirts</p>
+          </div>
+        </figure>
+        <figure class="group img-hover-zoom rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 animate-fadeUp relative" style="animation-delay:.1s">
+          <img class="w-full h-56 md:h-64 object-cover" src="assets/mug.webp" alt="Custom mug printing" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <p class="text-white font-bold text-lg">Custom Mugs</p>
+          </div>
+        </figure>
+        <figure class="group img-hover-zoom rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 animate-fadeUp relative" style="animation-delay:.2s">
+          <img class="w-full h-56 md:h-64 object-cover" src="assets/photoframe.webp" alt="Photo frames" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <p class="text-white font-bold text-lg">Photo Frames</p>
+          </div>
+        </figure>
+        <figure class="group img-hover-zoom rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 animate-fadeUp relative" style="animation-delay:.3s">
+          <img class="w-full h-56 md:h-64 object-cover" src="assets/cap.webp" alt="Custom caps" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <p class="text-white font-bold text-lg">Custom Caps</p>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-8 text-center">
+        <h2 class="text-3xl font-extrabold" data-i18n="pricing_title">Transparent Pricing</h2>
+        <p class="text-slate-600" data-i18n="pricing_sub">Starting prices. WhatsApp us for a final quote.</p>
+      </header>
+      <div class="overflow-hidden rounded-2xl border">
+        <table class="min-w-full divide-y">
+          <thead class="bg-slate-50 text-left">
+            <tr>
+              <th class="px-4 py-3 font-semibold" data-i18n="item">Item</th>
+              <th class="px-4 py-3 font-semibold" data-i18n="start_price">Starting Price</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-4 py-3" data-i18n="p_tshirt">Custom Tshirt</td>
+              <td class="px-4 py-3 font-semibold">₹299</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3" data-i18n="p_mug">Custom Mug</td>
+              <td class="px-4 py-3 font-semibold">₹199</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3" data-i18n="p_frame">Photo Frame</td>
+              <td class="px-4 py-3 font-semibold">₹249</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3" data-i18n="p_cap">Custom Cap</td>
+              <td class="px-4 py-3 font-semibold">₹199</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Mousepad</td>
+              <td class="px-4 py-3 font-semibold">₹149</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3">Ladies' Wear</td>
+              <td class="px-4 py-3 font-semibold">₹349</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3" data-i18n="p_bulk">Corporate Bulk Order</td>
+              <td class="px-4 py-3 font-semibold" data-i18n="custom_quote">Custom quote</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-6">
+        <a target="_blank" rel="noopener" href="https://wa.me/919763518364?text=Hi!%20Share%20final%20price%20for%20my%20printing%20order." class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 shadow btn-shine animate-shimmer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span data-i18n="get_quote">Get Final Price on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-8 text-center">
+        <h2 class="text-3xl font-extrabold" data-i18n="reviews_title">Testimonials & Reviews</h2>
+        <p class="text-slate-600" data-i18n="reviews_sub">Loved by customers. 5‑star print quality.</p>
+      </header>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="p-6 rounded-2xl bg-white shadow border">
+              <div class="flex items-center gap-3">
+                <img class="w-12 h-12 rounded-full" src="https://i.pravatar.cc/100?img=12" alt="Customer" />
+                <div>
+                  <p class="font-semibold">Aarav</p>
+                  <p class="text-emerald-600 text-sm">★★★★★</p>
+                </div>
+              </div>
+              <p class="mt-4 text-slate-600" data-i18n="rev_1">Great finish and color accuracy. Got our team jerseys on time!</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="p-6 rounded-2xl bg-white shadow border">
+              <div class="flex items-center gap-3">
+                <img class="w-12 h-12 rounded-full" src="https://i.pravatar.cc/100?img=32" alt="Customer" />
+                <div>
+                  <p class="font-semibold">Mira</p>
+                  <p class="text-emerald-600 text-sm">★★★★★</p>
+                </div>
+              </div>
+              <p class="mt-4 text-slate-600" data-i18n="rev_2">Loved the mugs we gifted at the party. Crisp print and fast service.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="p-6 rounded-2xl bg-white shadow border">
+              <div class="flex items-center gap-3">
+                <img class="w-12 h-12 rounded-full" src="https://i.pravatar.cc/100?img=5" alt="Customer" />
+                <div>
+                  <p class="font-semibold">Rohit</p>
+                  <p class="text-emerald-600 text-sm">★★★★★</p>
+                </div>
+              </div>
+              <p class="mt-4 text-slate-600" data-i18n="rev_3">Excellent quality for our corporate gifting. Highly recommend.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-4 mt-6">
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order / Inquiry Form -->
+  <section id="order" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-8 text-center">
+        <h2 class="text-3xl font-extrabold" data-i18n="order_title">Order / Inquiry</h2>
+        <p class="text-slate-600" data-i18n="order_sub">Share your details. We’ll respond fast on WhatsApp or call.</p>
+      </header>
+      <form id="inquiryForm" class="grid md:grid-cols-2 gap-4 bg-white p-6 rounded-2xl border shadow-sm">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="name" data-i18n="name">Name</label>
+          <input id="name" name="name" required class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Your name" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="phone" data-i18n="phone">Phone</label>
+          <input id="phone" name="phone" required pattern="[0-9]{10}" class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="10-digit number" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="product" data-i18n="product">Product</label>
+          <select id="product" name="product" required class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            <option>Custom Tshirt</option>
+            <option>Custom Mug</option>
+            <option>Photo Frame</option>
+            <option>Custom Cap</option>
+            <option>Mousepad</option>
+            <option>Ladies Wear</option>
+            <option>Sportswear</option>
+            <option>Corporate Gifting</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="qty" data-i18n="quantity">Quantity</label>
+          <input id="qty" name="qty" type="number" min="1" value="1" required class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="1" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1" for="design" data-i18n="upload">Upload Design (Optional)</label>
+          <input id="design" name="design" type="file" accept="image/*,.pdf" class="w-full rounded-xl border px-3 py-2" />
+          <p class="text-xs text-slate-500 mt-1">💡 You can share your design file via WhatsApp after submitting</p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1" for="message" data-i18n="message">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Share any details"></textarea>
+        </div>
+        <div class="md:col-span-2 flex flex-wrap items-center gap-4">
+          <button type="submit" id="submitBtn" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-600 shadow-xl shadow-emerald-600/30 hover:shadow-2xl hover:shadow-emerald-600/40 transition-all duration-300 hover:scale-105 font-bold text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>
+            <span data-i18n="send_inquiry">Send Inquiry</span>
+          </button>
+          <a target="_blank" rel="noopener" href="https://wa.me/919763518364" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl glass-effect border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-bold text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="pt-12 pb-16 bg-slate-900 text-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <p class="text-2xl font-extrabold">H<span class="text-emerald-400">/</span>P</p>
+          <p class="text-sm text-slate-400 mt-2" data-i18n="foot_tag">Design, Print, Smile</p>
+          <div class="flex gap-3 mt-4">
+            <a href="https://instagram.com/" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm6.5-.8a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
+              <span>@happyprints</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="font-semibold mb-3" data-i18n="foot_contact">Contact</p>
+          <p>+91 97635 18364</p>
+          <p class="text-slate-400 mt-2" data-i18n="foot_address">Address: 123, Your Street, Your City</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-3" data-i18n="foot_quick">Quick Links</p>
+          <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            <a href="#home">Home</a>
+            <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+            <a href="#products" data-i18n="nav_products">Products</a>
+            <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+            <a href="#order" data-i18n="nav_order">Order</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-white/10 text-xs flex flex-wrap items-center justify-between gap-2">
+        <p>© <span id="year"></span> H/P Happy Prints. All rights reserved.</p>
+        <button id="langToggleFooter" class="px-2 py-1 rounded border border-white/20">🇮🇳 Marathi</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+    <a href="https://wa.me/919763518364" target="_blank" class="group w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 animate-pulse hover:animate-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+    <a href="tel:+919763518364" class="group w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9a16 16 0 0 0 6 6l.54-1.23a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('active');
+      mobileMenuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenuFunc() {
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenuFunc);
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenuFunc);
+    });
+
+    // Swiper init
+    window.addEventListener('load', () => {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.swiper', {
+          loop: true,
+          autoplay: { delay: 4000, disableOnInteraction: false },
+          pagination: { el: '.swiper-pagination', clickable: true },
+          slidesPerView: 1,
+          spaceBetween: 20,
+          breakpoints: { 
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 24 }, 
+            1024: { slidesPerView: 3, spaceBetween: 32 } 
+          }
+        });
+      }
+    });
+
+    // Simple parallax
+    const layer = document.getElementById('parallaxLayer');
+    if (layer) {
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const y = window.scrollY * 0.2;
+            layer.style.transform = `translateY(${y}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // i18n content (EN / MR)
+    const dict = {
+      en: {
+        tagline: 'Design, Print, Smile',
+        nav_gallery: 'Gallery',
+        nav_products: 'Products',
+        nav_pricing: 'Pricing',
+        nav_reviews: 'Reviews',
+        nav_order: 'Order',
+        nav_contact: 'Contact',
+        hero_h1: 'Your Custom Printing Partner',
+        hero_sub: 'Premium custom T‑shirts, mugs, bottles, caps, sportswear, frames, keychains and corporate gifting — designed for celebrations and brands.',
+        cta_order: 'Order on WhatsApp',
+        cta_view: 'See Gallery',
+        rating: '5-star rated by happy customers',
+        fast_quote: 'Fast quotes on WhatsApp',
+        what_title: 'What We Do',
+        what_sub: 'Creative printing solutions for personal, sports and corporate needs.',
+        svc_tshirt: 'Custom T-shirts',
+        svc_tshirt_sub: 'DTF, screen & vinyl prints in vibrant colors.',
+        svc_mugs: 'Mugs & Bottles',
+        svc_mugs_sub: 'Sublimation prints that last wash after wash.',
+        svc_caps: 'Personalized Caps',
+        svc_caps_sub: 'Trendy caps with your logo or name.',
+        svc_sports: 'Sportswear printing',
+        svc_sports_sub: 'Team jerseys, names and numbers.',
+        svc_frames: 'Photo frames & Keychains',
+        svc_frames_sub: 'Gift-ready frames and accessories.',
+        svc_corp: 'Corporate gifting printing',
+        svc_corp_sub: 'Bulk orders with brand quality.',
+        gallery_title: 'Products Gallery',
+        gallery_sub: 'High‑quality mockups and real product vibes.',
+        pricing_title: 'Transparent Pricing',
+        pricing_sub: 'Starting prices. WhatsApp us for a final quote.',
+        item: 'Item',
+        start_price: 'Starting Price',
+        p_tshirt: 'Custom Tshirt',
+        p_mug: 'Custom Mug',
+        p_frame: 'Photo Frame',
+        p_cap: 'Custom Cap',
+        p_bulk: 'Corporate Bulk Order',
+        custom_quote: 'Custom quote',
+        get_quote: 'Get Final Price on WhatsApp',
+        reviews_title: 'Testimonials & Reviews',
+        reviews_sub: 'Loved by customers. 5‑star print quality.',
+        rev_1: 'Great finish and color accuracy. Got our team jerseys on time!',
+        rev_2: 'Loved the mugs we gifted at the party. Crisp print and fast service.',
+        rev_3: 'Excellent quality for our corporate gifting. Highly recommend.',
+        order_title: 'Order / Inquiry',
+        order_sub: 'Share your details. We’ll respond fast on WhatsApp or call.',
+        name: 'Name',
+        phone: 'Phone',
+        product: 'Product',
+        quantity: 'Quantity',
+        upload: 'Upload Design',
+        message: 'Message',
+        send_inquiry: 'Send Inquiry',
+        foot_tag: 'Design, Print, Smile',
+        foot_contact: 'Contact',
+        foot_address: 'Address: 123, Your Street, Your City',
+        foot_quick: 'Quick Links'
+      },
+      mr: {
+        tagline: 'डिझाइन, प्रिंट, स्माईल',
+        nav_gallery: 'गॅलरी',
+        nav_products: 'उत्पादने',
+        nav_pricing: 'भाव',
+        nav_reviews: 'रिव्ह्यू',
+        nav_order: 'ऑर्डर',
+        nav_contact: 'संपर्क',
+        hero_h1: 'तुमचा कस्टम प्रिंटिंग पार्टनर',
+        hero_sub: 'टी-शर्ट, मग, बाटल्या, कॅप्स, स्पोर्ट्सवेअर, फ्रेम्स, की-चेन आणि कॉर्पोरेट गिफ्टिंग — सण-उत्सव आणि ब्रँडसाठी.',
+        cta_order: 'व्हॉट्सअॅप वर ऑर्डर करा',
+        cta_view: 'गॅलरी पहा',
+        rating: 'आनंदी ग्राहकांकडून ५-स्टार रेटिंग',
+        fast_quote: 'व्हॉट्सअॅप वर जलद कोट',
+        what_title: 'आम्ही काय करतो',
+        what_sub: 'वैयक्तिक, क्रीडा आणि कॉर्पोरेट गरजांसाठी सर्जनशील प्रिंटिंग.',
+        svc_tshirt: 'कस्टम टी-शर्ट',
+        svc_tshirt_sub: 'चमकदार रंगात DTF, स्क्रीन व विनायल प्रिंट.',
+        svc_mugs: 'मग्स आणि बाटल्या',
+        svc_mugs_sub: 'वॉशेबल, टिकाऊ सबलिमेशन प्रिंट.',
+        svc_caps: 'पर्सनलाइज्ड कॅप्स',
+        svc_caps_sub: 'तुमचा लोगो किंवा नाव असलेले ट्रेंडी कॅप्स.',
+        svc_sports: 'स्पोर्ट्सवेअर प्रिंटिंग',
+        svc_sports_sub: 'टीम जर्सी, नावे आणि नंबर.',
+        svc_frames: 'फोटो फ्रेम्स व की-चेन',
+        svc_frames_sub: 'गिफ्ट-रेडी फ्रेम्स व अ‍ॅक्सेसरीज.',
+        svc_corp: 'कॉर्पोरेट गिफ्टिंग प्रिंटिंग',
+        svc_corp_sub: 'ब्रँड क्वालिटीसह बल्क ऑर्डर.',
+        gallery_title: 'प्रॉडक्ट गॅलरी',
+        gallery_sub: 'हाय-क्वालिटी मॉकअप्स आणि रिअल प्रॉडक्ट वाइब्स.',
+        pricing_title: 'पारदर्शक भाव',
+        pricing_sub: 'स्टार्टिंग प्राइस. अंतिम कोटसाठी व्हॉट्सअॅप करा.',
+        item: 'आयटम',
+        start_price: 'स्टार्टिंग प्राइस',
+        p_tshirt: 'कस्टम टी-शर्ट',
+        p_mug: 'कस्टम मग',
+        p_frame: 'फोटो फ्रेम',
+        p_cap: 'कस्टम कॅप',
+        p_bulk: 'कॉर्पोरेट बल्क ऑर्डर',
+        custom_quote: 'कस्टम कोट',
+        get_quote: 'व्हॉट्सअॅप वर फायनल प्राइस घ्या',
+        reviews_title: 'टेस्टिमोनियल्स व रिव्ह्यू',
+        reviews_sub: 'ग्राहकांकडून प्रेम. ५‑स्टार प्रिंट क्वालिटी.',
+        rev_1: 'उत्कृष्ट फिनिश आणि कलर अचूकता. आमच्या जर्सी वेळेवर मिळाल्या!',
+        rev_2: 'पार्टीसाठी दिलेले मग खूप आवडले. झटपट सेवा.',
+        rev_3: 'कॉर्पोरेट गिफ्टिंगसाठी उत्कृष्ट गुणवत्ता. नक्की शिफारस.',
+        order_title: 'ऑर्डर / चौकशी',
+        order_sub: 'तुमचे तपशील शेअर करा. आम्ही लवकर उत्तर देऊ.',
+        name: 'नाव',
+        phone: 'फोन',
+        product: 'उत्पादन',
+        quantity: 'प्रमाण',
+        upload: 'डिझाइन अपलोड करा',
+        message: 'मेसेज',
+        send_inquiry: 'चौकशी पाठवा',
+        foot_tag: 'डिझाइन, प्रिंट, स्माईल',
+        foot_contact: 'संपर्क',
+        foot_address: 'पत्ता: १२३, तुमचा रस्ता, तुमचे शहर',
+        foot_quick: 'क्विक लिंक्स'
+      }
+    };
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'mr' ? 'mr' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = dict[lang][key] || dict.en[key] || el.textContent;
+      });
+    }
+
+    let currentLang = 'en';
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'mr' : 'en';
+      applyLang(currentLang);
+    }
+
+    document.getElementById('langToggle').addEventListener('click', toggleLang);
+    document.getElementById('langToggleFooter').addEventListener('click', toggleLang);
+    document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+    // Animate on scroll (fadeUp)
+    const observer = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) e.target.classList.add('animate-fadeUp');
+      }
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[class*="animate-fadeUp"]').forEach(el => observer.observe(el));
+
+    // Form submit with validation and feedback
+    const inquiryForm = document.getElementById('inquiryForm');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    inquiryForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      // Validate form
+      if (!inquiryForm.checkValidity()) {
+        inquiryForm.reportValidity();
+        return;
+      }
+      
+      // Get form data
+      const form = new FormData(this);
+      const name = form.get('name');
+      const phone = form.get('phone');
+      const product = form.get('product');
+      const qty = form.get('qty');
+      const message = form.get('message') || 'No additional message';
+      
+      // Show loading state
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg class="animate-spin w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Sending...</span>';
+      
+      // Create WhatsApp message
+      const msg = `*New Inquiry from H/P Happy Prints Website*%0A%0A` +
+                  `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                  `📱 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                  `🎨 *Product:* ${encodeURIComponent(product)}%0A` +
+                  `📦 *Quantity:* ${encodeURIComponent(qty)}%0A` +
+                  `💬 *Message:* ${encodeURIComponent(message)}`;
+      
+      const url = `https://wa.me/919763518364?text=${msg}`;
+      
+      // Open WhatsApp
+      setTimeout(() => {
+        window.open(url, '_blank');
+        
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        
+        // Show success message
+        const successMsg = document.createElement('div');
+        successMsg.className = 'fixed top-20 right-6 bg-emerald-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 animate-fadeUp';
+        successMsg.innerHTML = '✅ Inquiry sent! Opening WhatsApp...';
+        document.body.appendChild(successMsg);
+        
+        // Remove success message after 3 seconds
+        setTimeout(() => {
+          successMsg.remove();
+        }, 3000);
+        
+        // Reset form
+        inquiryForm.reset();
+      }, 500);
+    });
+
+    // Initial language
+    applyLang('en');
+  </script>
+</body>
+</html>
